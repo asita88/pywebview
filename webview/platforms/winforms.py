@@ -687,6 +687,9 @@ def create_window(window):
         thread.Join()
 
     else:
+        if is_chromium:
+            init_storage()
+
         _main_window_created.wait()
         i = list(BrowserView.instances.values())[0]  # arbitrary instance
         i.Invoke(Func[Type](create))
